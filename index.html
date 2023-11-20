@@ -2,55 +2,104 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            http-equiv="X-UA-Compatible"
+            content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
         <title>Recipes App</title>
+
+        <!-- =============== ICONS =============== -->
         <link
             rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        />
-        <link rel="stylesheet" href="style.css" />
-        <script src="script.js" defer></script>
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+        <!--=============== CSS ===============-->
+        <link
+            rel="stylesheet"
+            href="assets/css/style.css" />
+
+        <!--=============== MAIN JS ===============-->
+        <script
+            src="assets/js/main.js"
+            defer></script>
     </head>
     <body>
-        <div class="mobile-container">
-            <header>
-                <input type="text" />
-                <button id="search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </header>
+        <!--==================== HEADER ====================-->
 
-            <div class="fav-container">
-                <h3>Favorite Meals</h3>
-                <ul class="fav-meals">
-                    <li>
-                        <img
-                            src="/10JS Projects/recipeApp/rice.jpg"
-                            alt=""
-                        /><span>Rice</span>
-                    </li>
-                    <li>
-                        <img
-                            src="/10JS Projects/recipeApp/carbonara.jpg"
-                            alt=""
-                        /><span>Carbonara</span>
-                    </li>
-                    <li>
-                        <img
-                            src="/10JS Projects/recipeApp/lasagne.jpg"
-                            alt=""
-                        /><span>Lasagne</span>
-                    </li>
-                    <li>
-                        <img
-                            src="/10JS Projects/recipeApp/soup.jpg"
-                            alt=""
-                        /><span>Soup</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="meals" id="meals"></div>
-        </div>
+        <!--==================== MAIN ====================-->
+        <main class="main">
+            <!--==================== SEARCH ====================-->
+            <section
+                class="search section"
+                id="search">
+                <div class="search__container container grid">
+                    search
+                    <div class="search__content">
+                        <input type="text" />
+                        <button>
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!--==================== FAVORITE ====================-->
+            <section
+                class="favorite section"
+                id="favorite">
+                <div class="favorite__container container grid">
+                    favorite
+                    <div class="favorite__content">
+                        <h3>Favorite Meals</h3>
+                        <ul class="favorite__list">
+                            <li class="favorite__item">
+                                <img
+                                    src="/Projects/RecipeApp/assets/img/rice.jpg"
+                                    alt="Rice" />
+                                <span class="favorite__subtitle">Rice</span>
+                            </li>
+                            <li class="favorite__item">
+                                <img
+                                    src="/Projects/RecipeApp/assets/img/carbonara.jpg"
+                                    alt="Carbonara" />
+                                <span class="favorite__subtitle">Carbonara</span>
+                            </li>
+                            <li class="favorite__item">
+                                <img
+                                    src="/Projects/RecipeApp/assets/img/lasagne.jpg"
+                                    alt="Lasagne" />
+                                <span class="favorite__subtitle">Lasagne</span>
+                            </li>
+                            <li class="favorite__item">
+                                <img
+                                    src="/Projects/RecipeApp/assets/img/soup.jpg"
+                                    alt="Soup" />
+                                <span class="favorite__subtitle">Soup</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!--==================== MEALS ====================-->
+            <section
+                class="meals section"
+                id="meals">
+                <div class="meals__container container grid">
+                    meals
+                    <div class="meals__content"></div>
+                </div>
+            </section>
+
+            <!--==================== RECIPE ====================-->
+            <section
+                class="recipe section"
+                id="recipe">
+                <div class="recipe__container container grid">recipe</div>
+            </section>
+        </main>
+        <!--==================== FOOTER ====================-->
     </body>
 </html>

@@ -1,7 +1,9 @@
+/*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
 
 * {
     box-sizing: border-box;
+    border: 1px red solid;
 }
 
 body {
@@ -19,7 +21,8 @@ img {
     max-width: 100%;
 }
 
-.mobile-container {
+/* ==================== SEARCH ==================== */
+.search__container {
     background-color: white;
     box-shadow: 0 0 10px 2px #3333331a;
     border-radius: 3px;
@@ -27,21 +30,21 @@ img {
     width: 400px;
 }
 
-header {
+.search__content {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1rem;
 }
 
-header input {
+.search__content input {
     background-color: #d6d6d6;
     border: none;
     border-radius: 3px;
     font-family: inherit;
     padding: 0.3rem 1rem;
 }
-header button {
+.search__content button {
     background-color: transparent;
     border: none;
     color: #858383;
@@ -49,13 +52,14 @@ header button {
     margin-left: 10px;
 }
 
-.fav-container {
+/* ==================== FAVORITE ==================== */
+.favorite__container {
     background-color: beige;
     padding: 0.2rem 1rem;
     text-align: center;
 }
 
-.fav-meals {
+.favorite__list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -63,11 +67,12 @@ header button {
     padding: 0;
 }
 
-.fav-meals li {
+.favorite__item {
+    font-size: 0.9rem;
     width: 85px;
 }
 
-.fav-meals li img {
+.favorite__item img {
     border: 2px solid #ffffff;
     border-radius: 50%;
     box-shadow: 0 0 10px 2px #3333331a;
@@ -76,11 +81,8 @@ header button {
     width: 70px;
 }
 
-.fav-meals li span {
-    font-size: 0.9rem;
-}
-
-.meal {
+/* ==================== MEALS ==================== */
+.meals {
     border-radius: 3px;
     box-shadow: 0 0 10px 2px #3333331a;
     margin: 1.5rem;
