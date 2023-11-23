@@ -1,9 +1,18 @@
-const mealsEl = document.querySelector(".meals__content")
-const favoriteContainer = document.querySelector(".favorite__list")
-
+// ==================== search VAR ====================
 const searchInput = document.querySelector(".search__content input")
 const searchButton = document.querySelector(".search__content button")
 
+// ==================== favorite VAR ====================
+const favoriteList = document.querySelector(".favorite__list")
+
+// ==================== meals VAR ====================
+const mealsContent = document.querySelector(".meals__content")
+
+// ==================== recipe VAR ====================
+const recipeContainer = document.querySelector(".recipe__container")
+const recipeContent = document.querySelector(".recipe__content")
+
+// ==================== APP START ====================
 getRandomMeal()
 fetchFavMeals()
 
@@ -39,7 +48,6 @@ async function getMealsBySearch(term) {
 
 // ==================== addMeal(mealData, random = false) ====================
 function addMeal(mealData, random = false) {
-    const mealsContent = document.querySelector(".meals__content")
     const mealDiv = document.createElement("div")
     mealsContent.classList.add("meal")
 
@@ -53,7 +61,9 @@ function addMeal(mealData, random = false) {
             : ""
     }
     
-    <img src="${mealData.strMealThumb}" alt="${mealData.strMeal}" />
+    <img src="${mealData.strMealThumb}" alt="${mealData.strMeal}" class="imgtest" />
+    <button class="refresh">Refresh</button>
+
     </div>
     
     <div class="meal-body">
@@ -78,8 +88,18 @@ function addMeal(mealData, random = false) {
 
         fetchFavMeals()
     })
-
     mealsContent.append(mealDiv)
+
+    const mealImg = mealDiv.querySelector(".meal-header img")
+    mealImg.addEventListener("click", () => {
+        updateRecipeContent(mealData)
+    })
+
+    const refreshButton = mealDiv.querySelector(".refresh")
+    refreshButton.addEventListener("click", () => {
+        mealsContent.innerHTML = ""
+        getRandomMeal()
+    })
 }
 
 // ==================== addMealLocalStorage(mealId) ====================
@@ -106,7 +126,7 @@ function getMealsLocalStorage() {
 // ==================== fetchFavMeals() ====================
 async function fetchFavMeals() {
     //clean the container
-    favoriteContainer.innerHTML = ""
+    favoriteList.innerHTML = ""
 
     const mealIds = getMealsLocalStorage()
 
@@ -127,7 +147,7 @@ function addMealFav(mealData) {
     src="${mealData.strMealThumb}" 
     alt="${mealData.strMeal}" />
     <span>${mealData.strMeal}</span>
-    <button class="clear"><i class="fa-solid fa-xmark"></i></i></button>
+    <button class="clear"><i class="fa-solid fa-xmark"></i></button>
     `
     const btnClr = favMeal.querySelector(".clear")
 
@@ -138,12 +158,70 @@ function addMealFav(mealData) {
 
         fetchFavMeals()
     })
-    favoriteContainer.append(favMeal)
+
+    const favImg = favMeal.querySelector("li img")
+    favImg.addEventListener("click", () => {
+        updateRecipeContent(mealData)
+    })
+    favoriteList.append(favMeal)
 }
 
+// ==================== updateRecipeContent(mealData) ====================
+function updateRecipeContent(mealData) {
+    // clean the recipe__content
+    recipeContent.innerHTML = ""
+
+    // update the Recipe
+    const recipeDiv = document.createElement("div")
+    recipeContent.append(recipeDiv)
+
+    // move class .hidden and show recipe__content
+    recipeContainer.classList.remove("hidden")
+
+    //get ingredients and measures
+    const ingredients = []
+    for (let i = 1; i <= 20; i++) {
+        if (mealData["strIngredient" + i]) {
+            ingredients.push(`${mealData["strIngredient" + i]} - ${mealData["strMeasure" + i]} `)
+        } else {
+            break
+        }
+    }
+    recipeContent.innerHTML = `
+    <button><i class="fa-solid fa-xmark"></i></button>
+        <h1>${mealData.strMeal}</h1>
+        <img
+            src="${mealData.strMealThumb}"
+            alt="${mealData.strMeal}" />
+        <p>${mealData.strInstructions}</p>
+        <h3>Ingredients:</h3>
+        <ul>
+            ${ingredients
+                .map(
+                    (ing) => `
+            <li>${ing}</li>
+            `
+                )
+                .join("")}
+        
+        </ul>
+        <a href="${mealData.strSource}" target="_blank">${mealData.strSource}</a>
+        
+        <a href="${mealData.strYoutube}" target="_blank"><i class="fa-brands fa-youtube">youtube</i></a>
+        
+        `
+
+    const recipeButton = document.querySelector(".recipe__content button")
+
+    recipeButton.addEventListener("click", () => {
+        recipeContainer.classList.add("hidden")
+    })
+}
+
+// ==================== addEventListener ====================
 searchButton.addEventListener("click", async () => {
     //clean container
-    mealsEl.innerHTML = ""
+    mealsContent.innerHTML = ""
 
     const search = searchInput.value
     const meals = await getMealsBySearch(search)
