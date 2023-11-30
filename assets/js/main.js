@@ -1,16 +1,16 @@
 // ==================== search VAR ====================
-const searchInput = document.querySelector(".search__content input")
-const searchButton = document.querySelector(".search__content button")
+const searchInput = document.getElementById("search-input")
+const searchButton = document.getElementById("search-button")
 
 // ==================== favorite VAR ====================
-const favoriteList = document.querySelector(".favorite__list")
+const favoriteList = document.getElementById("favorite-list")
 
 // ==================== meals VAR ====================
-const mealsContent = document.querySelector(".meals__content")
+const mealsContent = document.getElementById("meals-content")
 
 // ==================== recipe VAR ====================
-const recipeContainer = document.querySelector(".recipe__container")
-const recipeContent = document.querySelector(".recipe__content")
+const recipeContainer = document.getElementById("recipe-container")
+const recipeContent = document.getElementById("recipe-content")
 
 // ==================== APP START ====================
 getRandomMeal()
@@ -211,7 +211,7 @@ function updateRecipeContent(mealData) {
         
         `
 
-    const recipeButton = document.querySelector(".recipe__content button")
+    const recipeButton = document.querySelector("#recipe-content button")
 
     recipeButton.addEventListener("click", () => {
         recipeContainer.classList.add("hidden")

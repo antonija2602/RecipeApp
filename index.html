@@ -36,8 +36,10 @@
                 id="search">
                 <div class="search__container container grid">
                     <div class="search__content">
-                        <input type="text" />
-                        <button>
+                        <input
+                            type="text"
+                            id="search-input" />
+                        <button id="search-button">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
                     </div>
@@ -51,7 +53,9 @@
                 <div class="favorite__container container grid">
                     <div class="favorite__content">
                         <h3>Favorite Meals</h3>
-                        <ul class="favorite__list"></ul>
+                        <ul
+                            class="favorite__list"
+                            id="favorite-list"></ul>
                     </div>
                 </div>
             </section>
@@ -61,7 +65,9 @@
                 class="meals section"
                 id="meals">
                 <div class="meals__container container grid">
-                    <div class="meals__content"></div>
+                    <div
+                        class="meals__content"
+                        id="meals-content"></div>
                 </div>
             </section>
 
@@ -69,8 +75,12 @@
             <section
                 class="recipe section"
                 id="recipe">
-                <div class="recipe__container container grid hidden">
-                    <div class="recipe__content"></div>
+                <div
+                    class="recipe__container container grid hidden"
+                    id="recipe-container">
+                    <div
+                        class="recipe__content"
+                        id="recipe-content"></div>
                 </div>
             </section>
         </main>
